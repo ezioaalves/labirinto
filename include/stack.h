@@ -1,13 +1,14 @@
 #include <iostream>
 #include <utility>
-#include "plate.h"
+#include "cell.h"
 
 class Stack
 {
-public:
+private:
     int size;
-    Plate *top;
+    Cell *top;
 
+public:
     Stack();
     void push(int x, int y);            // Adds an element to the top.
     void pop();                         // Removes the top element.

@@ -9,9 +9,9 @@ Stack::Stack()
 
 void Stack::push(int x, int y) // Adds an element to the top.
 {
-    Plate *newPlate = new Plate(x, y);
-    newPlate->next = top;
-    top = newPlate;
+    Cell *newCell = new Cell(x, y);
+    newCell->next = top;
+    top = newCell;
     size++;
 }
 
@@ -21,7 +21,7 @@ void Stack::pop() // Removes the top element.
     {
         throw std::out_of_range("Empty List!");
     }
-    Plate *output = top;
+    Cell *output = top;
     top = top->next;
     delete output;
     size--;
