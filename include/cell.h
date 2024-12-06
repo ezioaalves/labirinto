@@ -8,7 +8,7 @@ private:
     Cell *next;
 
 public:
-    Cell(int x, int y);
+    Cell(int x = 0, int y = 0);
     bool operator==(Cell *other);
 
     friend class Stack;
