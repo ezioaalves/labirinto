@@ -5,7 +5,7 @@
 class Maze
 {
 private:
-    Cell *currentCell, exitCell, entryCell;
+    Cell *currentCell, *exitCell, *entryCell;
     const char exitMarker, entryMarker, visited, passage, wall;
     Stack maze;
 
@@ -13,5 +13,5 @@ private:
 
 public:
     void exitMaze();
-    Maze();
+    Maze(std::pair<int, int> currentCell, std::pair<int, int> exitCell, std::pair<int, int> entryCell);
 };
