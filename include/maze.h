@@ -1,5 +1,4 @@
 #include <iostream>
-#include "cell.h"
 #include "stack.h"
 
 class Maze
