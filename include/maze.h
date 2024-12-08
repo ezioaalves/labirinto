@@ -1,17 +1,16 @@
 #include <iostream>
-#include "cell.h"
 #include "stack.h"
 
 class Maze
 {
 private:
     Cell *currentCell, *exitCell, *entryCell;
-    const char exitMarker, entryMarker, visited, passage, wall;
+    const char exitMarker = 'e', entryMarker = 'm', visited = '.', passage = '0', wall = '1';
     Stack maze;
 
     friend std::ostream &operator<<(std::ostream &os, const Cell &cell);
 
 public:
     void exitMaze();
-    Maze(std::pair<int, int> currentCell, std::pair<int, int> exitCell, std::pair<int, int> entryCell);
+    Maze(int cont, std::string fileName);
 };
