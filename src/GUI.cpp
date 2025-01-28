@@ -11,8 +11,8 @@ GUI::GUI(Maze &maze, float cell_x, float cell_y)
 
 void GUI::initializeGrid()
 {
-    int rows = mazeData.getRows() + 1;
-    int cols = mazeData.getCols() + 1;
+    int rows = mazeData.getRows() + 2;
+    int cols = mazeData.getCols() + 2;
     grid.resize(rows, std::vector<sf::RectangleShape>(cols));
 
     cell_x = 800 / cols;
@@ -28,17 +28,17 @@ void GUI::initializeGrid()
             grid[row][col].setOutlineThickness(1.0f);
             switch (mazeData.getCellType(row, col))
             {
-            case 0:
+            case '0':
                 grid[row][col].setFillColor(sf::Color::White);
                 break;
-            case 1:
+            case '1':
                 grid[row][col].setFillColor(sf::Color::Blue);
                 break;
             case 'e':
                 grid[row][col].setFillColor(sf::Color::Green);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::Yellow);
+                grid[row][col].setFillColor(sf::Color::White);
                 break;
             case 'm':
                 grid[row][col].setFillColor(sf::Color::Red);
@@ -69,13 +69,13 @@ void GUI::updateGrid()
                 grid[row][col].setFillColor(sf::Color::Green);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::Yellow);
+                grid[row][col].setFillColor(sf::Color::White);
                 break;
             case 'm':
-                grid[row][col].setFillColor(sf::Color::Red);
+                grid[row][col].setFillColor(sf::Color::White);
                 break;
             default:
-                grid[row][col].setFillColor(sf::Color::Transparent);
+                grid[row][col].setFillColor(sf::Color::Blue);
                 break;
             }
         }
