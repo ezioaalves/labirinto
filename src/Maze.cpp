@@ -1,4 +1,5 @@
-#include "Maze.h"
+#include "../include/Maze.h"
+#include "../include/GUI.h"
 #include <fstream>
 #include <vector>
 #include <cstdlib> // For exit()
@@ -65,7 +66,6 @@ void Maze::loadMaze(const std::string &filename)
     }
     infile >> rows >> cols;
     infile.ignore(); // Consume the newline after the dimensions
-
     // Read the next 'rows' lines
     std::vector<std::string> lines(rows);
     for (int i = 0; i < rows; i++)
@@ -290,11 +290,16 @@ Cell Maze::getExit() const
     return exitCell;
 }
 
+char Maze::getCellType(const int row, const int col)
+{
+    return maze[row][col];
+}
+
 // ---------------------------------------------------------------------
 // solveMaze: Implements the maze-solving algorithm using internal stacks.
 // Returns true if the exit is found, false otherwise.
 // ---------------------------------------------------------------------
-bool Maze::exitMaze()
+bool Maze::exitMaze(GUI &gui)
 {
     // Push the entry position onto the path stack
     wayBack.push(entryCell);
@@ -311,6 +316,13 @@ bool Maze::exitMaze()
 
         // Animate: clear the screen and print the current state of the maze
         clearScreen();
+        gui.window.clear();
+        gui.updateGrid();
+        gui.updateRatPosition(currentCell.getRow(), currentCell.getCol());
+        gui.drawGrid();
+        gui.drawRat();
+        gui.window.display();
+
         std::cout << *this;                                         // Use overloaded << operator
         std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Delay for animation
 
@@ -365,4 +377,14 @@ bool Maze::exitMaze()
     }
 
     return foundExit;
+}
+
+int Maze::getRows() const
+{
+    return rows;
+}
+
+int Maze::getCols() const
+{
+    return cols;
 }

@@ -1,4 +1,4 @@
-#include "Cell.h"
+#include "../include/Cell.h"
 
 Cell::Cell(int r, int c) : row(r), col(c) {}
 

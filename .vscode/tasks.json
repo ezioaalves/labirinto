@@ -10,6 +10,9 @@
                 "${file}",
                 "src/*.cpp",
                 "-IC:include/",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
