@@ -4,7 +4,7 @@
 
 int main()
 {
-    std::string filename = "maze2.txt";
+    std::string filename = "maze.txt";
 
     Maze maze(filename);
 

@@ -13,6 +13,10 @@ private:
     Maze &mazeData;
     float cell_x;
     float cell_y;
+    sf::Texture ratTexture;
+    sf::Texture pathTexture;
+    sf::Texture wallTexture;
+    sf::Texture passTexture;
 
     void initializeGrid();
     void updateGrid();

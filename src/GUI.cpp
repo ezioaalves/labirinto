@@ -5,7 +5,13 @@ GUI::GUI(Maze &maze, float cell_x, float cell_y)
       window(sf::VideoMode(800, 800), "Where's the Rat?")
 {
     rat.setSize(sf::Vector2f(cell_x, cell_y));
-    rat.setFillColor(sf::Color::Red);
+    // rat.setFillColor(sf::Color::Red);
+    ratTexture.loadFromFile("assets/rat.png");
+    rat.setTexture(&ratTexture);
+    pathTexture.loadFromFile("assets/path.jpg");
+    wallTexture.loadFromFile("assets/wall.jpg");
+    passTexture.loadFromFile("assets/pass.jpg");
+
     initializeGrid();
 }
 
@@ -29,19 +35,16 @@ void GUI::initializeGrid()
             switch (mazeData.getCellType(row, col))
             {
             case '0':
-                grid[row][col].setFillColor(sf::Color::White);
+                grid[row][col].setTexture(&passTexture);
                 break;
             case '1':
-                grid[row][col].setFillColor(sf::Color::Blue);
+                grid[row][col].setTexture(&wallTexture);
                 break;
             case 'e':
-                grid[row][col].setFillColor(sf::Color::Green);
+                grid[row][col].setFillColor(sf::Color::Black);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::Yellow);
-                break;
-            case 'm':
-                grid[row][col].setFillColor(sf::Color::Red);
+                grid[row][col].setTexture(&pathTexture);
                 break;
             default:
                 grid[row][col].setFillColor(sf::Color::Transparent);
@@ -60,22 +63,19 @@ void GUI::updateGrid()
             switch (mazeData.getCellType(row, col))
             {
             case '0':
-                grid[row][col].setFillColor(sf::Color::White);
+                grid[row][col].setTexture(&passTexture);
                 break;
             case '1':
-                grid[row][col].setFillColor(sf::Color::Blue);
+                grid[row][col].setTexture(&wallTexture);
                 break;
             case 'e':
-                grid[row][col].setFillColor(sf::Color::Green);
+                grid[row][col].setFillColor(sf::Color::Black);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::Yellow);
-                break;
-            case 'm':
-                grid[row][col].setFillColor(sf::Color::White);
+                grid[row][col].setTexture(&pathTexture);
                 break;
             default:
-                grid[row][col].setFillColor(sf::Color::Blue);
+                grid[row][col].setFillColor(sf::Color::Transparent);
                 break;
             }
         }
