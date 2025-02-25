@@ -38,7 +38,7 @@ void GUI::initializeGrid()
                 grid[row][col].setFillColor(sf::Color::Green);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::White);
+                grid[row][col].setFillColor(sf::Color::Yellow);
                 break;
             case 'm':
                 grid[row][col].setFillColor(sf::Color::Red);
@@ -53,9 +53,9 @@ void GUI::initializeGrid()
 
 void GUI::updateGrid()
 {
-    for (int row = 0; row < mazeData.getRows(); ++row)
+    for (int row = 0; row < mazeData.getRows() + 2; ++row)
     {
-        for (int col = 0; col < mazeData.getCols(); ++col)
+        for (int col = 0; col < mazeData.getCols() + 2; ++col)
         {
             switch (mazeData.getCellType(row, col))
             {
@@ -69,7 +69,7 @@ void GUI::updateGrid()
                 grid[row][col].setFillColor(sf::Color::Green);
                 break;
             case '.':
-                grid[row][col].setFillColor(sf::Color::White);
+                grid[row][col].setFillColor(sf::Color::Yellow);
                 break;
             case 'm':
                 grid[row][col].setFillColor(sf::Color::White);
