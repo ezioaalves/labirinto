@@ -1,12 +1,13 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-#include "Cell.h"
+#include "../include/Cell.h"
 #include <iostream>
 #include <stack>
 #include <vector>
 #include <string>
 
+class GUI;
 class Maze
 {
 private:
@@ -44,10 +45,15 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Maze &m);
 
-    bool exitMaze();
+    bool exitMaze(GUI &gui);
+
+    char getCellType(const int row, const int col);
 
     Cell getEntry() const;
     Cell getExit() const;
+
+    int getRows() const;
+    int getCols() const;
 };
 
 #endif

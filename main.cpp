@@ -1,4 +1,5 @@
-#include "Maze.h"
+#include "include/Maze.h"
+#include "include/GUI.h"
 #include <string>
 
 int main()
@@ -7,7 +8,8 @@ int main()
 
     Maze maze(filename);
 
-    bool found = maze.exitMaze();
+    GUI gui(maze);
+    gui.run();
 
     return 0;
 }
